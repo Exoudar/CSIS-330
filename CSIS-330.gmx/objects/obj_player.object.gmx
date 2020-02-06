@@ -28,8 +28,13 @@
             <string>/// Initialization
 
 state = 'idle';
-player_speed = 4;
-movement_tracking = 32; // we move 32 pixels per command
+previous_state = 'idle';
+self_speed = 4;
+max_movement_per_command = 32;
+movement_tracking = max_movement_per_command; // we move 32 pixels per command
+
+// Debugging (ignore this)
+tt = 'player';
 </string>
           </argument>
         </arguments>
@@ -54,70 +59,42 @@ movement_tracking = 32; // we move 32 pixels per command
             <kind>1</kind>
             <string>/// Movement Control
 
-// setting shortcuts for out movement keys
-var left = keyboard_check(vk_left);
-var right = keyboard_check(vk_right);
-var up = keyboard_check(vk_up);
-var down = keyboard_check(vk_down);
+scr_input_keys();
 
-// ***LEFT COMMAND***
+// Excute moving script
+scr_moving();
 
-// First we make sure we are in idle state (not moving)
-if (left) &amp;&amp; state == 'idle' {
-    // Then we change our state based on what is left of us.
-    state = 'moving_left';
-    if place_meeting(x-player_speed,y,obj_crate) {
-        state = 'pushing_left';
-    }
-}
+// Gravity
+scr_gravity_rules_player();
 
-// RIGHT COMMAND
-
-// First we make sure we are in idle state (not moving)
-if (right) &amp;&amp; state == 'idle' {
-    // Then we change our state based on what is left of us.
-    state = 'moving_right';
-    if place_meeting(x+1,y,obj_crate) {
-        state = 'pushing_right';
-    }
-}
-
-// Movement
-if state == 'idle' &amp;&amp; movement_tracking != 32 {
-    // before we start moving, reset movement tracking
-    movement_tracking = 32;
-}
-
-switch (state) {
-    // LEFT
-    case 'moving_left':
-        x -= player_speed;
-        movement_tracking -= player_speed;
-        if movement_tracking &lt;= 0 {
-            state = 'idle';
-        }
-        break;
-    case 'pushing_left':
-        x -= player_speed;
-        movement_tracking -= player_speed;
-        if movement_tracking &lt;= 0 {
-            state = 'idle';
-        }
-        var crate = instance_place(x-1,y,obj_crate);
-        var crate_speed = player_speed;
-        with (crate) {
-            x -= crate_speed;
-        }
-        break;
-    // RIGHT
-    case 'moving_right':
-        x += player_speed;
-        movement_tracking -= player_speed;
-        if movement_tracking &lt;= 0 {
-            state = 'idle';
-        }
-        break;
-}
+// Ice
+scr_ice_rules(previous_state);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+draw_text(x,y-32,state);
+draw_text(x,y-64,movement_tracking);
+draw_text(x,y-128,x);
 </string>
           </argument>
         </arguments>

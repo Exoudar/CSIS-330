@@ -8,14 +8,34 @@
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_crate01</sprite>
+    <sprite>sprites\spr_wall01</sprite>
+    <sprite>sprites\spr_ladder01</sprite>
+    <sprite>sprites\spr_solid01</sprite>
+    <sprite>sprites\spr_ice01</sprite>
+    <sprite>sprites\spr_wheel01</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_moving.gml</script>
+    <script>scripts\scr_climbing_ladder.gml</script>
+    <script>scripts\scr_input_keys.gml</script>
+    <script>scripts\scr_gravity_rules_player.gml</script>
+    <script>scripts\scr_gravity_rules_crate.gml</script>
+    <script>scripts\scr_ice_rules.gml</script>
+    <script>scripts\scr_wheel_rules.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_control</object>
     <object>objects\obj_crate</object>
     <object>objects\obj_crate01</object>
+    <object>objects\obj_wall</object>
+    <object>objects\obj_ladder</object>
+    <object>objects\obj_solid</object>
+    <object>objects\obj_ice</object>
+    <object>objects\obj_occupy</object>
+    <object>objects\obj_wheel</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_room01</room>
