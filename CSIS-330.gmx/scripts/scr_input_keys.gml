@@ -39,10 +39,10 @@ if (left) && state == 'idle' {
 if (right) && state == 'idle' {
     if !place_meeting(x+1,y,obj_wall){
         if place_meeting(x+1,y,obj_crate){
-        var crate = instance_place(x+1,y,obj_crate);
-        if crate.state == 'idle'{
-            state = 'moving_right';
-        }
+            var crate = instance_place(x+1,y,obj_crate);
+            if crate.state == 'idle'{
+                state = 'moving_right';
+            }
         } else {
             state = 'moving_right';
         }
