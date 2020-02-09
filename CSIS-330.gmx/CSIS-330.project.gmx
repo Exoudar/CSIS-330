@@ -45,7 +45,7 @@
     <object>objects\obj_goal</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
+    <room>rooms\rm_test</room>
     <room>rooms\rm_room01</room>
   </rooms>
   <help>
