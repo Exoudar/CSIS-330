@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_solid</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -92,9 +92,9 @@ scr_ice_rules(previous_state);
           <argument>
             <kind>1</kind>
             <string>draw_self();
-draw_text(x,y-32,state);
-draw_text(x,y-64,movement_tracking);
-draw_text(x,y-128,x);
+//draw_text(x,y-32,state);
+//draw_text(x,y-64,movement_tracking);
+//draw_text(x,y-128,x);
 </string>
           </argument>
         </arguments>

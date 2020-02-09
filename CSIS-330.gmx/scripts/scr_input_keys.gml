@@ -12,12 +12,24 @@ var down = keyboard_check(vk_down);
 if (left) && state == 'idle' {
     // First, we make sure that one pixel (-1) left of us is not a wall
     if !place_meeting(x-1,y,obj_wall){
-        state = 'moving_left';
+        // First lets make sure no crate is blocking our path (in case the crate is falling or moving towards us)
+        if place_meeting(x-1,y,obj_crate){
+            var crate = instance_place(x-1,y,obj_crate);
+            if crate.state == 'idle'{
+                state = 'moving_left';
+            }
+        } else {
+            state = 'moving_left';
+        }
     }
     
     // If another object is left of us, we are either able to push it or not
     if place_meeting(x-1,y,obj_crate) {
-        state = 'pushing_left';
+        // We should only be allowed to push something if it was not moving
+        var crate = instance_place(x-1,y,obj_crate);
+        if crate.state == 'idle'{
+            state = 'pushing_left';
+        }
     }
 }
 
@@ -25,10 +37,21 @@ if (left) && state == 'idle' {
 
 // First we make sure we are in idle state (not moving)
 if (right) && state == 'idle' {
-    // Then we change our state based on what is left of us.
-    state = 'moving_right';
+    if !place_meeting(x+1,y,obj_wall){
+        if place_meeting(x+1,y,obj_crate){
+        var crate = instance_place(x+1,y,obj_crate);
+        if crate.state == 'idle'{
+            state = 'moving_right';
+        }
+        } else {
+            state = 'moving_right';
+        }
+    }
     if place_meeting(x+1,y,obj_crate) {
-        state = 'pushing_right';
+        var crate = instance_place(x+1,y,obj_crate);
+        if crate.state == 'idle'{
+            state = 'pushing_right';
+        }
     }
 }
 

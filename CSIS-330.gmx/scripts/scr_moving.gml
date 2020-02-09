@@ -25,7 +25,7 @@ switch (state) {
             // We make sure that crate (the object we are pushing) has nothing blocking its path (wall or another crate)
             if !place_meeting(x-1,y,obj_solid){
                 // we make sure this happens once, so we dont counter a problem (moving indefinitely)
-                if state != 'moving_left'{
+                if state != 'moving_left' && state != 'rolling_left' && state != 'falling'{
                     state = 'moving_left';
                     previous_state = 'idle';
                     movement_tracking = max_movement_per_command
@@ -139,7 +139,7 @@ switch (state) {
         var can_move = true; 
         with (crate) {
             if !place_meeting(x+1,y,obj_solid){
-                if state != 'moving_right'{
+                if state != 'moving_right' && state != 'rolling_right' && state != 'falling'{
                     state = 'moving_right';
                     previous_state = 'idle';
                     movement_tracking = max_movement_per_command

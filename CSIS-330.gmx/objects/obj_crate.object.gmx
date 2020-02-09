@@ -90,7 +90,7 @@ scr_ice_rules(previous_state);
           <argument>
             <kind>1</kind>
             <string>draw_self();
-draw_text(x,y-64,state);
+//draw_text(x,y-64,state);
 </string>
           </argument>
         </arguments>

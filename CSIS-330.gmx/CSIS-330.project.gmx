@@ -8,13 +8,18 @@
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_crate01</sprite>
+    <sprite>sprites\spr_frozen_crate01</sprite>
     <sprite>sprites\spr_wall01</sprite>
     <sprite>sprites\spr_ladder01</sprite>
     <sprite>sprites\spr_solid01</sprite>
     <sprite>sprites\spr_ice01</sprite>
     <sprite>sprites\spr_wheel01</sprite>
+    <sprite>sprites\spr_goal01</sprite>
+    <sprite>sprites\spr_magnet</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_background01</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_moving.gml</script>
@@ -36,6 +41,8 @@
     <object>objects\obj_ice</object>
     <object>objects\obj_occupy</object>
     <object>objects\obj_wheel</object>
+    <object>objects\object10</object>
+    <object>objects\obj_goal</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_room01</room>

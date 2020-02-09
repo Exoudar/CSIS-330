@@ -35,6 +35,7 @@ movement_tracking = max_movement_per_command; // we move 32 pixels per command
 
 // Unique stats
 rolling = false; // with this we can control when will it roll or not
+falling = false; // will allow us to continue rolling after we fall
 
 // Degbugging (ignore this)
 tt = 'crate';
@@ -100,7 +101,7 @@ scr_ice_rules(previous_state);
           <argument>
             <kind>1</kind>
             <string>draw_self();
-draw_text(x,y-64,state);
+//draw_text(x,y-64,state);
 </string>
           </argument>
         </arguments>
